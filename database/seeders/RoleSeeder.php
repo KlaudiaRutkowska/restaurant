@@ -12,6 +12,32 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        Role::Factory()->count(3);
+        $entries = [
+            [
+                'id' => 1,
+                'code' => 'ADMIN',
+                'name' => 'Administrator',
+            ],
+            [
+                'id' => 2,
+                'code' => 'WORKER',
+                'name' => 'Employee',
+            ],
+            [
+                'id' => 3,
+                'code' => 'USER',
+                'name' => 'User',
+            ],
+        ];
+
+        foreach ($entries as $entry) {
+            Role::updateOrCreate(
+                ['id' => $entry['id']],
+                [
+                    'code' => $entry['code'],
+                    'name' => $entry['name']
+                ]
+            );
+        }
     }
 }
