@@ -2,11 +2,11 @@
 
 namespace App\Enums;
 
-enum RoleEnum: int
+enum RoleEnum: string
 {
-    case ADMIN = 1;
-    case WORKER = 2;
-    case USER = 3;
+    case ADMIN = 'ADMIN';
+    case WORKER = 'WORKER';
+    case USER = 'USER';
 
 
 }
