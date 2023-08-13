@@ -41,9 +41,12 @@ class CreateUser extends Command
             $query->where('code', RoleEnum::ADMIN->value);
         })->count();
 
+        $digit = new \NumberFormatter("en", \NumberFormatter::SPELLOUT);
+        $stringDigit = $digit->format($admins);
+
         if ($admins > 0) {
             $plural = Str::plural('admin', $admins);
-            $this->info("There is already $admins $plural in database");
+            $this->info("There is already $stringDigit $plural in database");
             return false;
         }
 
