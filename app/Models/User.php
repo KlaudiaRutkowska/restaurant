@@ -49,7 +49,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
-
+  
     public function isAdmin():bool {
         if($this->role_id === RoleEnum::ADMIN->value) {
             return true;
