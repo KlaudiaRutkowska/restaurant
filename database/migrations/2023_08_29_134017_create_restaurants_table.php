@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('city', 255);
             $table->string('street', 255)->nullable();
             $table->string('building_number', 10);
-            $table->boolean('active')->default('1')->unsigned();
+            $table->boolean('active')->default('1');
             $table->timestamps();
         });
     }
