@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Enums\RoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -45,11 +46,21 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    /**
+     * @return BelongsTo
+     */
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }
-  
+
+    /**
+     * @return BelongsToMany
+     */
+    public function dishes(): BelongsToMany {
+        return $this->belongsToMany(Dish::class, 'shopping_cart');
+    }
+
     public function isAdmin():bool {
         if($this->role_id === RoleEnum::ADMIN->value) {
             return true;
