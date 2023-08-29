@@ -18,9 +18,9 @@ class RestaurantFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'city' => $this->faker->city(),
-            'street' => $this->faker->streetName(),
-            'building_number' => $this->faker->buildingNumber(),
+            'city' => fake()->city(),
+            'street' => fake()->streetName(),
+            'building_number' => fake()->buildingNumber(),
             'active' => '1',
         ];
     }

@@ -25,7 +25,7 @@ class RestaurantController extends Controller
     public function store(StoreRequest $request)
     {
         return new RestaurantResource(
-            Restaurant::create($request)
+            Restaurant::create($request->only('name', 'city', 'street', 'building_number', 'active'))
         );
     }
 
@@ -42,7 +42,7 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRequest $request, Restaurant $restaurant)
     {
-        return $restaurant->update($request->all());
+        return $restaurant->update($request->only('name', 'city', 'street', 'building_number', 'active'));
     }
 
     /**

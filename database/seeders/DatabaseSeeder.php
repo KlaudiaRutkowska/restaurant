@@ -12,9 +12,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            RoleSeeder::class,
-            RestaurantSeeder::class,
-        ]);
+        if( config('app.env') !== 'production') {
+            $this->call([RestaurantSeeder::class]);
+}
+
+        $this->call([RoleSeeder::class]);
     }
 }
