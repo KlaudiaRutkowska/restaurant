@@ -6,6 +6,7 @@ use App\Http\Requests\Restaurant\StoreRequest;
 use App\Http\Requests\Restaurant\UpdateRequest;
 use App\Http\Resources\RestaurantResource;
 use App\Models\Restaurant;
+use Illuminate\Http\JsonResponse;
 
 class RestaurantController extends Controller
 {
@@ -42,7 +43,7 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRequest $request, Restaurant $restaurant)
     {
-        return $restaurant->update($request->only('name', 'city', 'street', 'building_number', 'active'));
+        return new RestaurantResource($restaurant->update($request->only('name', 'city', 'street', 'building_number', 'active')));
     }
 
     /**
@@ -50,6 +51,8 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
-        return $restaurant->delete();
+        $restaurant->delete();
+
+        return new JsonResponse(null, 204);
     }
 }
