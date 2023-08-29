@@ -18,7 +18,7 @@ class DishFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'price' => fake()->randomFloat(2, 0, 5),
+            'price' => fake()->randomFloat(2, 0.00, 999.99),
             'active' => '1',
         ];
     }

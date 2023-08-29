@@ -22,8 +22,8 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', max(255)],
-            'price' => ['required', 'decimal:2,5'],
+            'name' => ['required', 'string', min(1), max(255)],
+            'price' => ['required', 'decimal:0,2', min(0.00), max(999.99)],
             'active' => ['required'],
         ];
     }
