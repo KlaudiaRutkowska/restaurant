@@ -45,11 +45,21 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    /**
+     * @return BelongsTo
+     */
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }
-  
+
+    /**
+     * @return BelongsTo
+     */
+    public function shoppingCart(): BelongsTo {
+        return $this->belongsTo(ShoppingCart::class);
+    }
+
     public function isAdmin():bool {
         if($this->role_id === RoleEnum::ADMIN->value) {
             return true;

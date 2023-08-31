@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Controllers\ShoppingCartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('restaurants', RestaurantController::class);
 Route::apiResource('dishes', DishController::class);
+Route::apiResource('shopping_carts', ShoppingCartController::class);
