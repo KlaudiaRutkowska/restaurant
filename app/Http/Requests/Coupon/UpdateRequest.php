@@ -22,7 +22,9 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'code' => ['required', 'size:20', 'unique'],
+            'discount_percentage' => ['required'],
+            'active' => ['required'],
         ];
     }
 }
