@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\DishController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\ShoppingCartController;
@@ -24,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('restaurants', RestaurantController::class);
 Route::apiResource('dishes', DishController::class);
 Route::apiResource('shopping_carts', ShoppingCartController::class);
+Route::apiResource('coupons', CouponController::class);
