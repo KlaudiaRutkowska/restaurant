@@ -25,8 +25,10 @@ class ShoppingCartController extends Controller
      */
     public function store(StoreRequest $request)
     {
+        $user = auth()->user();
+
         return new ShoppingCartResource(
-            ShoppingCart::create($request->only('quantity'))
+            $user->shoppingCart->create($request->only('quantity', 'dish_id'))
         );
     }
 

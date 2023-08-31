@@ -23,6 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'quantity' => ['required', 'integer', min(0), max(99)],
+            'dish_id' => ['exists:dish,id'],
         ];
     }
 }

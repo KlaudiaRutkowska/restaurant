@@ -6,7 +6,6 @@ namespace App\Models;
 use App\Enums\RoleEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -55,10 +54,10 @@ class User extends Authenticatable
     }
 
     /**
-     * @return BelongsToMany
+     * @return BelongsTo
      */
-    public function dishes(): BelongsToMany {
-        return $this->belongsToMany(Dish::class, 'shopping_cart');
+    public function shoppingCart(): BelongsTo {
+        return $this->belongsTo(ShoppingCart::class);
     }
 
     public function isAdmin():bool {
